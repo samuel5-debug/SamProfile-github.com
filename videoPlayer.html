@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    <link rel="stylesheet" href=".css"> <!-- Replace with your CSS file -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #333;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        .back-link {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        main {
+            margin: 20px auto;
+            width: 70%;
+        }
+        video {
+            width: 100%;
+            max-width: 800px;
+            border: 3px solid #333;
+            border-radius: 10px;
+        }
+        .video-list {
+            margin-top: 20px;
+        }
+        .video-list a {
+            display: block;
+            padding: 10px;
+            margin: 5px auto;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            width: 200px;
+            border-radius: 5px;
+        }
+        .video-list a:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Video Player</h1>
+        <a href="interface006.html" class="back-link">← Back to Home</a> <!-- Replace with home page URL -->
+    </header>
+
+    <main>
+        <h2>Now Playing:</h2>
+        <video id="videoPlayer" controls autoplay preload=auto;>
+            <source id="videoSource" src="https://res.cloudinary.com/dd9kw61ba/video/upload/v1740180186/fuwea6yusnxqos0roflf.mp4" type="video/mp4"> <!-- Replace with default video -->
+            Your browser does not support the video tag.
+        </video>
+        
+        <div class="video-list">
+            <h3>Other Videos:</h3>
+            <a href="https://res.cloudinary.com/dd9kw61ba/video/upload/v1740180196/qakvjz36jisf4qg7vsff.mp4">Hardware Repair Basics</a>
+            <a href="https://res.cloudinary.com/dd9kw61ba/video/upload/v1740180198/i8rxrycwvjlhop9wgyzq.mp4">Networking Setup Guide</a>
+            <a href="https://res.cloudinary.com/dd9kw61ba/video/upload/v1740180197/d9fvpd7rvm2rnj6kbezc.mp4">Cybersecurity Essentials</a>
+            <a href="https://res.cloudinary.com/dd9kw61ba/video/upload/v1740180197/zaxgd4vop0e0iyaaentw.mp4">Introduction to Coding</a>
+        </div>
+    </main>
+
+    <script>
+        // Extract the video filename from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const videoFile = urlParams.get('video');
+
+        if (videoFile) {
+            const videoPlayer = document.getElementById('videoPlayer');
+            const videoSource = document.getElementById('videoSource');
+            
+            videoSource.src = videoFile; // Set correct video path
+            videoPlayer.load();  // Reload video
+            videoPlayer.play();  // Auto-play after loading
+        }
+    </script>
+
+</body>
+</html>
